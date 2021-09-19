@@ -4,13 +4,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class primeraclase {
 	
-	public static void main(String[] args) {
+	
+	public static boolean rutVerificado(String rutIngresado) {
 		
-		Scanner sc = new Scanner(System.in);
 		String[] stringRut=null;
-		while (true) {
-		System.out.println("Ingrese el numero de rut");
-		String rutIngresado=sc.nextLine();
 		rutIngresado=rutIngresado.trim();// se quitan los espacios contenidos en el dato ingresado.
 		int multiplicador=2;
 		int SumaMulti=0;
@@ -72,15 +69,45 @@ public class primeraclase {
 			// esto no funciona!!
 			if (ver == restoaux.toUpperCase()) {//se verifica para que de un mensaje por pantalla 
 				System.out.println("Rut correcto");
+				return true;
 			}else {
 				System.out.println("Rut incorrecto");
+				return false;
 			}
 		}else {
 			System.out.println("Rut incorrecto");// este mensaje es arrojado en caso de que el rut ingresado tenga caracteres invalidos
-		}
-		
-		}
+			return false;
+		}	
 		
 	}
-
+	
+	static String opciones() {
+		String opcion="";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Desea terminar con la ejecucion (SI/NO) ");
+		opcion = sc.nextLine();
+		opcion=opcion.toUpperCase();
+		System.out.println("opcion ingresada " + opcion);
+		return opcion;
+	}
+	
+	public static void main(String[] args) {
+		
+		String opcion="";
+		Scanner sc = new Scanner(System.in);
+		boolean checkRut=false;
+		/*
+		do {
+		System.out.println("Ingrese el numero de rut");
+		String rutIngresado=sc.nextLine();
+		checkRut=rutVerificado(rutIngresado);
+		if (checkRut ==false) {
+			opciones();
+		}
+		
+		}while (checkRut==false && !opcion.equals("SI"));
+*/
+		
+		
+}
 }
