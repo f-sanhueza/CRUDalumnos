@@ -107,6 +107,42 @@ public class primeraclase {
 		
 		}while (checkRut==false && !opcion.equals("SI"));
 */
+		String[] nombreNumeros= new String[8];  
+		nombreNumeros[0]="cero";
+		nombreNumeros[1]="uno";
+		nombreNumeros[2]="dos";
+		nombreNumeros[3]="tres";
+		nombreNumeros[4]="cuatro";
+		nombreNumeros[5]="cinco";
+		nombreNumeros[6]="seis";
+		nombreNumeros[7]="siete";
+		System.out.println("Ingrese un promedio");
+		String promedio=sc.nextLine(); 
+		String coma="coma";
+		Integer parteEntera=0;
+		String[]  enteroPunto=null;
+		String[] enteroComa=null;
+		Integer parteDecimal=0;
+		
+		if (promedio.contains(".")==true ) {
+			enteroPunto= promedio.split(".");
+			parteEntera=Integer.valueOf(enteroPunto[0]); 
+			parteDecimal=Integer.valueOf(enteroPunto[1]); 
+			System.out.println("Su promedio es de "+ nombreNumeros[parteEntera] +" "+ coma+ " " + nombreNumeros[parteDecimal]);
+		}else if (promedio.contains(",")==true ){
+			enteroComa=promedio.split(",");
+			parteEntera=Integer.valueOf(enteroComa[0]); 
+			parteDecimal=Integer.valueOf(enteroComa[1]); 
+			System.out.println("Su promedio es de "+ nombreNumeros[parteEntera] +" "+ coma+ " " + nombreNumeros[parteDecimal]);
+		}else {
+			parteEntera = Integer.valueOf(promedio);
+			parteDecimal=0;
+			System.out.println("Su promedio es de "+ nombreNumeros[parteEntera] +" "+ coma+ " " + nombreNumeros[parteDecimal]);
+		}
+		
+		
+		
+		
 		
 		
 }
