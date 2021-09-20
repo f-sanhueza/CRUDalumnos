@@ -3,8 +3,34 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class primeraclase {
+	public static boolean buscaElemento(String matriz[][], String busca, int start, int end, int columna) {
+		
+		for (int i=start; i<=end; i++) {
+			if (matriz[i][columna].equals(busca.toUpperCase())) {
+				return true;
+			}else {
+				return false;
+			}
+				
+			}
+		return false;
+		}
 	
-	
+public static Integer buscaMatriz(String matriz[][], String busca, int start, int end, int columna) {
+		int k=0;
+		for (int i=start; i<=end; i++) {
+			if (matriz[i][columna].equals(busca.toUpperCase())) {
+				k=k++;
+				return i;
+			}
+			}
+		if (k==0) {
+			System.out.println("No encontrado en el sistema");
+				
+			}
+		return 500;
+		}
+
 	public static boolean rutVerificado(String rutIngresado) {
 		
 		String[] stringRut=null;
