@@ -52,6 +52,22 @@ public class fecha2 {
 			return "0";
 		}
 	}
+	
+	public static boolean esNombre(String nombre) {
+		boolean verificaLetras=false;
+		nombre=nombre.trim();
+		nombre=nombre.toUpperCase();
+		verificaLetras=nombre.matches("[a-zA-Z]*");
+		System.out.println("Resultado= "+ verificaLetras);
+		if (verificaLetras==true) {
+			return true;
+		}
+		return false;
+	}
+
+	
+		
+	
  
 
 	public static void main(String[] args) {

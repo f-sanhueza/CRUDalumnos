@@ -64,6 +64,10 @@ public class BuscarAlumno extends JInternalFrame {
 		JButton btnNewButton = new JButton("Buscar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String hola="";
+				hola=principal.Alumno.alumnos[0][0];
+				boolean d=principal.Alumno.llenarmatriz().checkRut;
+				System.out.print(hola);
 			}
 		});
 		btnNewButton.setBounds(421, 30, 89, 23);

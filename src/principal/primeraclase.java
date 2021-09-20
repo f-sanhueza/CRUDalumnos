@@ -50,18 +50,18 @@ public static Integer buscaMatriz(String matriz[][], String busca, int start, in
 			stringRut= rutIngresado.split("-");// se divide en dos segmentos el rut para evaluacion de vrificador por separado
 			StringBuilder rut = new StringBuilder(stringRut[0]);// se toma solo la parte de millosnes de rut 
 			rutIngresado = rut.reverse().toString();// se invierte la cadena
-			System.out.println("rut dado vuelta =" + rutIngresado );
+			//System.out.println("rut dado vuelta =" + rutIngresado );
 			int largo=rutIngresado.length();// se toma el largo de la cadena 
-			System.out.println("largo =" + largo );
+			//System.out.println("largo =" + largo );
 			for (int i=0; i<=rutIngresado.length()-1;i++) {
 				char c =rutIngresado.charAt(i);//Se toma caracter por caracter de la cadena 
 				rutNumer=Character.getNumericValue(c);// los caracteres se traspasan a numero
-				System.out.print("indice= "+ i);
-				System.out.print("   Caracter =" + c);
-				System.out.print("   entero="+ rutNumer);
-				System.out.print("   multiplicador="+ multiplicador);
+				//System.out.print("indice= "+ i);
+				//System.out.print("   Caracter =" + c);
+				//System.out.print("   entero="+ rutNumer);
+				//System.out.print("   multiplicador="+ multiplicador);
 				SumaMulti=SumaMulti+(rutNumer*multiplicador);// se realiza la suma de la multiplicacion 
-				System.out.println("    Suma= "+ SumaMulti);
+				//System.out.println("    Suma= "+ SumaMulti);
 				
 				multiplicador=multiplicador+1;// el multiplicador se aumenta 
 
@@ -70,9 +70,9 @@ public static Integer buscaMatriz(String matriz[][], String busca, int start, in
 				}
 			}
 			resto=SumaMulti%11;// se saca el resto de la multiplicacion 
-			System.out.print("resto= "+ resto);
+			//System.out.print("resto= "+ resto);
 			int resta=11-resto;// se realiza una resta 
-			System.out.print("       resta= "+ resta);
+			//System.out.print("       resta= "+ resta);
 			String restoaux="";
 // se evalua el resultado de la resta 
 			switch(resta) {
@@ -85,20 +85,20 @@ public static Integer buscaMatriz(String matriz[][], String busca, int start, in
 			default:
 				restoaux=Integer.toString(resta);// se pasa a string el entero resta 
 			}
-			System.out.print("      restoaux= "+ restoaux);
+			//System.out.print("      restoaux= "+ restoaux);
 			String verificador = new String(stringRut[1].toUpperCase());//Se construye un string con el digito verificador del rut ingresado
 			
-			System.out.println("        verificador= "+ verificador);
+			//System.out.println("        verificador= "+ verificador);
 			
 			if (verificador.equals(restoaux)) {//se verifica para que de un mensaje por pantalla 
-				System.out.println("Rut correcto");
+				//System.out.println("Rut correcto");
 				return true;
 			}else {
-				System.out.println("Rut incorrecto");
+				//System.out.println("Rut incorrecto");
 				return false;
 			}
 		}else {
-			System.out.println("Formato de Rut incorrecto");// este mensaje es arrojado en caso de que el rut ingresado tenga caracteres invalidos
+			//System.out.println("Formato de Rut incorrecto");// este mensaje es arrojado en caso de que el rut ingresado tenga caracteres invalidos
 			return false;
 		}	
 		

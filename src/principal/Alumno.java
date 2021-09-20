@@ -9,7 +9,15 @@ public class Alumno {
 	public static void llenarmatriz (String rut) 
 	{
 		
-		alumnos[0][0] = rut; 
+		boolean checkRut=principal.primeraclase.rutVerificado(rut);
+		System.out.println(checkRut);
+		if (checkRut == true){
+			alumnos[0][0] = rut; 
+		}else {
+			
+		}
+		
+		
 	}
 	
 	
