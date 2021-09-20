@@ -17,7 +17,8 @@ public class fecha2 {
 
 			System.out.print("Ingrese año de nacimiento en formato yyyy");
 			String year1 = sc.nextLine();
-			boolean checkNumero=year1.matches("[1-9][1,4]");
+			boolean checkNumero=year1.matches("[0-9]*");
+			System.out.print(checkNumero);
 			if (checkNumero==true){
 				int yearNumeric=Integer.parseInt( year1);
 				LocalDate current_date = LocalDate.now();

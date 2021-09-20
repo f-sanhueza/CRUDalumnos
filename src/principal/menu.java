@@ -13,8 +13,17 @@ public class menu {
 		int col=alumnos[0].length;
 		Scanner sc = new Scanner(System.in);
 		boolean siempre=true;
+		String cont = "";
+		for (int j=0;j<=row-1;j++) {
+			for (int k=0;k<=col-1;k++) {
+				alumnos[j][k] = cont;
+			}
+		}
+		int columna=0;
+		String busca="";
+		boolean redireccion=false;
 		do {
-			boolean redireccion=false;
+			
 			String opcion="";
 			System.out.println("");
 			System.out.println("########################################");
@@ -34,8 +43,9 @@ public class menu {
 			String evaluacionFecha="0";
 			while (redireccion==false) {
 				opcion=sc.nextLine();
-				System.out.println(opcion);
-				if (opcion.matches("[1-7][1]")==true) {
+				System.out.println(opcion+ "    " );
+				
+				if (opcion.matches("[1-7]")==true &&Integer.parseInt(opcion)<8 && Integer.parseInt(opcion)>0 ) {
 					System.out.println("Ingrese al si ");
 					switch (Integer.parseInt(opcion)) {
 
@@ -45,7 +55,7 @@ public class menu {
 						int cnin=0;
 						String rutIngresado="";
 						while (pregunta==false &&  cnin <=row-1 ) {
-							if (alumnos[cnin][0].equals(null)) {
+							if (alumnos[cnin][0].equals("")) {
 								
 							
 								do {
@@ -126,13 +136,18 @@ public class menu {
 										}
 									
 									}while (evaluacionFecha=="0" && !principal.primeraclase.opciones().equals("SI")) ;
+									 	
+									 	System.out.println("Sali del do while ");
+									 	break;
 									
-									
+									 	
 								}
 								
-								
+								System.out.println("Sali del if ");
 								
 							}
+							System.out.println("Sali del if2 ");
+							break;
 						}
 						int citer = 0;
 						for (int j=0;j<=row-1;j++) {
@@ -150,16 +165,72 @@ public class menu {
 						break;
 						
 					case 2:
+						System.out.println("ACTUALIZAR");
+						
 						break;
 					case 3:
+						System.out.println("ELIMINAR");
+						String del = "SI";
+						String eliminar = "";
+						int  i = 0;
+						System.out.println("Ingrese el identificadro del alumno que desea sacar del curso");
+						busca=sc.nextLine();
+						columna = 0;
+						buscarepetir = principal.primeraclase.buscaElemento(alumnos,busca,0,row-1,0);
+						if (buscarepetir==true) {
+							int visualizar =principal.primeraclase.buscaMatriz (alumnos,busca,0,row-1,columna);
+							System.out.println(visualizar);
+							System.out.println("esta seguro de eliminar el registro? ingrese (si)");
+							eliminar=sc.nextLine();
+							if (eliminar.toUpperCase().equals(del)) {
+								for (i=0;i<=col-1;i++) {
+									alumnos[visualizar][i] = "";
+								}
+							}
+						}
 						break;
 					case 4:
+						boolean bnumber=false;
+						System.out.println("BUSCAR");
+						System.out.println("buscar: 1) Identificador     2)Nombre       3)Apellido");
+						String sel=sc.nextLine();
+						bnumber= sel.matches("[1-3]");
+						int seleccion = Integer.parseInt(sel);
+						columna=0;
+						busca="";
+						if (bnumber==true) {
+							switch (seleccion) {
+							case 1:
+								columna = 0;
+								System.out.println("ingrese el Identificador a buscar ");
+								busca= sc.nextLine();
+								break;
+							case 2:
+								columna = 1;
+								System.out.println("ingrese el Nombre a buscar ");
+								busca =sc.nextLine();
+								break;
+							case 3:
+								columna = 2;
+								System.out.println("ingrese el Apellido a buscar ");
+								busca =sc.nextLine();
+								break;	
+							default:
+								System.out.println("No ingresaste una seleccion valida.");
+							}
+							int visualizar = principal.primeraclase.buscaMatriz(alumnos,busca,0,row-1,columna);
+						}
+						
 						break;
 					case 5:
+						System.out.println("SUBIR NOTAS");
+						
 						break;
 					case 6:
+						System.out.println("VER NOTAS");
 						break;
 					case 7:
+						
 						break;
 						
 					}

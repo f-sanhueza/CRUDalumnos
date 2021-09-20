@@ -16,17 +16,20 @@ public class primeraclase {
 		return false;
 		}
 	
-public static Integer buscaMatriz(String matriz[][], String busca, int start, int end, int columna) {
+public static int buscaMatriz(String matriz[][], String busca, int start, int end, int columna) {
 		int k=0;
 		for (int i=start; i<=end; i++) {
 			if (matriz[i][columna].equals(busca.toUpperCase())) {
-				k=k++;
-				return i;
+					for (int j=0;j<=end;j++) {
+						System.out.print(matriz[i][j]+" || ");
+						k = k+1;
+						return i;
+					}
+				}
 			}
-			}
+			
 		if (k==0) {
-			System.out.println("No encontrado en el sistema");
-				
+			System.out.println("No encontrado en el sistema");	
 			}
 		return 500;
 		}
