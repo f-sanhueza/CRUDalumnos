@@ -4,12 +4,19 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.SpringLayout;
+
+import org.w3c.dom.events.EventTarget;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Component;
+import java.awt.Event;
+
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AgregarAlumno extends JInternalFrame {
 	private JTextField txtApellidoMaterno;
@@ -34,7 +41,7 @@ public class AgregarAlumno extends JInternalFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -98,6 +105,18 @@ public class AgregarAlumno extends JInternalFrame {
 		getContentPane().add(txtRut);
 		
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				   int key = e.getKeyChar();
+				   boolean mayusculas = key >= 65 && key <= 90;
+				   boolean minusculas = key >= 97 && key <= 122;       
+				   if (!(minusculas || mayusculas))
+				   {
+					   e.consume();
+				   }	
+			}
+		});
 		springLayout.putConstraint(SpringLayout.NORTH, txtNombre, 0, SpringLayout.NORTH, lblNombre);
 		springLayout.putConstraint(SpringLayout.WEST, txtNombre, 6, SpringLayout.EAST, lblNombre);
 		springLayout.putConstraint(SpringLayout.EAST, txtNombre, 0, SpringLayout.EAST, txtRut);
@@ -105,6 +124,18 @@ public class AgregarAlumno extends JInternalFrame {
 		getContentPane().add(txtNombre);
 		
 		txtApellidoPaterno = new JTextField();
+		txtApellidoPaterno.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				 int key = e.getKeyChar();
+				   boolean mayusculas = key >= 65 && key <= 90;
+				   boolean minusculas = key >= 97 && key <= 122;       
+				   if (!(minusculas || mayusculas))
+				   {
+					   e.consume();
+				   }	
+			}
+		});
 		springLayout.putConstraint(SpringLayout.NORTH, txtApellidoPaterno, 6, SpringLayout.SOUTH, lblNombre);
 		springLayout.putConstraint(SpringLayout.WEST, txtApellidoPaterno, 6, SpringLayout.EAST, lblApellidoPaterno);
 		springLayout.putConstraint(SpringLayout.EAST, txtApellidoPaterno, 0, SpringLayout.EAST, txtRut);
@@ -112,6 +143,18 @@ public class AgregarAlumno extends JInternalFrame {
 		getContentPane().add(txtApellidoPaterno);
 		
 		txtApellidoMaterno_1 = new JTextField();
+		txtApellidoMaterno_1.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				 int key = e.getKeyChar();
+				   boolean mayusculas = key >= 65 && key <= 90;
+				   boolean minusculas = key >= 97 && key <= 122;       
+				   if (!(minusculas || mayusculas))
+				   {
+					   e.consume();
+				   }	
+			}
+		});
 		springLayout.putConstraint(SpringLayout.NORTH, txtApellidoMaterno_1, 0, SpringLayout.NORTH, lblApellidoMaterno);
 		springLayout.putConstraint(SpringLayout.WEST, txtApellidoMaterno_1, 6, SpringLayout.EAST, lblApellidoMaterno);
 		springLayout.putConstraint(SpringLayout.EAST, txtApellidoMaterno_1, 0, SpringLayout.EAST, txtRut);
@@ -119,6 +162,23 @@ public class AgregarAlumno extends JInternalFrame {
 		getContentPane().add(txtApellidoMaterno_1);
 		
 		txtNCelular = new JTextField();
+		txtNCelular.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				  int key = e.getKeyChar();
+
+				    boolean numeros = key >= 48 && key <= 57;
+				        
+				    if (!numeros)
+				    {
+				        e.consume();
+				    }
+
+				    if (txtNCelular.getText().trim().length() == 8) {
+				        e.consume();
+				    }
+			}
+		});
 		springLayout.putConstraint(SpringLayout.NORTH, txtNCelular, 0, SpringLayout.NORTH, lblNCelular);
 		springLayout.putConstraint(SpringLayout.WEST, txtNCelular, 6, SpringLayout.EAST, lblNCelular);
 		springLayout.putConstraint(SpringLayout.EAST, txtNCelular, 0, SpringLayout.EAST, txtRut);
