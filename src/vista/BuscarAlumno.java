@@ -11,6 +11,8 @@ import javax.swing.JTable;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BuscarAlumno extends JInternalFrame {
 	private JTable table;
@@ -60,6 +62,10 @@ public class BuscarAlumno extends JInternalFrame {
 		getContentPane().add(table);
 		
 		JButton btnNewButton = new JButton("Buscar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setBounds(421, 30, 89, 23);
 		getContentPane().add(btnNewButton);
 		

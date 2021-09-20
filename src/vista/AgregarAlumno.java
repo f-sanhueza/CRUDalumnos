@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JInternalFrame;
 import javax.swing.SpringLayout;
 
@@ -17,14 +18,32 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.Date;
 
 public class AgregarAlumno extends JInternalFrame {
-	private JTextField txtApellidoMaterno;
+
 	private JTextField txtRut;
 	private JTextField txtNombre;
 	private JTextField txtApellidoPaterno;
-	private JTextField txtApellidoMaterno_1;
+	private JTextField txtApellidoMaterno;
 	private JTextField txtNCelular;
+	private JTextField txtCorreo;
+	public static String rut = "";
+	public static String nombre = "";
+	public static String apellidoPaterno = "";
+	public static String apellidoMaterno = "";
+	public static String nCelular = "";
+	public static Date fechaNacimiento;
+	public static String correo = "";
+	
+	
+	
 	
 	/**
 	 * Launch the application.
@@ -45,12 +64,15 @@ public class AgregarAlumno extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	
+	
 	public AgregarAlumno() {
 		setTitle("Agregar Alumno");
 		setMaximizable(true);
 		setIconifiable(true);
 		setClosable(true);
-		setBounds(100, 100, 450, 294);
+		setBounds(100, 100, 450, 332);
 		SpringLayout springLayout = new SpringLayout();
 		getContentPane().setLayout(springLayout);
 		
@@ -97,6 +119,13 @@ public class AgregarAlumno extends JInternalFrame {
 		lblFechaNacimiento.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		getContentPane().add(lblFechaNacimiento);
 		
+		JLabel lblCorreo = new JLabel("Correo:");
+		springLayout.putConstraint(SpringLayout.NORTH, lblCorreo, 6, SpringLayout.SOUTH, lblFechaNacimiento);
+		springLayout.putConstraint(SpringLayout.WEST, lblCorreo, 9, SpringLayout.WEST, lblNombre);
+		springLayout.putConstraint(SpringLayout.EAST, lblCorreo, 0, SpringLayout.EAST, lblRut);
+		lblCorreo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		getContentPane().add(lblCorreo);
+		
 		txtRut = new JTextField();
 		springLayout.putConstraint(SpringLayout.NORTH, txtRut, 0, SpringLayout.NORTH, lblRut);
 		springLayout.putConstraint(SpringLayout.WEST, txtRut, 6, SpringLayout.EAST, lblRut);
@@ -142,8 +171,8 @@ public class AgregarAlumno extends JInternalFrame {
 		txtApellidoPaterno.setColumns(10);
 		getContentPane().add(txtApellidoPaterno);
 		
-		txtApellidoMaterno_1 = new JTextField();
-		txtApellidoMaterno_1.addKeyListener(new KeyAdapter() {
+		txtApellidoMaterno = new JTextField();
+		txtApellidoMaterno.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				 int key = e.getKeyChar();
@@ -155,11 +184,11 @@ public class AgregarAlumno extends JInternalFrame {
 				   }	
 			}
 		});
-		springLayout.putConstraint(SpringLayout.NORTH, txtApellidoMaterno_1, 0, SpringLayout.NORTH, lblApellidoMaterno);
-		springLayout.putConstraint(SpringLayout.WEST, txtApellidoMaterno_1, 6, SpringLayout.EAST, lblApellidoMaterno);
-		springLayout.putConstraint(SpringLayout.EAST, txtApellidoMaterno_1, 0, SpringLayout.EAST, txtRut);
-		txtApellidoMaterno_1.setColumns(10);
-		getContentPane().add(txtApellidoMaterno_1);
+		springLayout.putConstraint(SpringLayout.NORTH, txtApellidoMaterno, 0, SpringLayout.NORTH, lblApellidoMaterno);
+		springLayout.putConstraint(SpringLayout.WEST, txtApellidoMaterno, 6, SpringLayout.EAST, lblApellidoMaterno);
+		springLayout.putConstraint(SpringLayout.EAST, txtApellidoMaterno, 0, SpringLayout.EAST, txtRut);
+		txtApellidoMaterno.setColumns(10);
+		getContentPane().add(txtApellidoMaterno);
 		
 		txtNCelular = new JTextField();
 		txtNCelular.addKeyListener(new KeyAdapter() {
@@ -191,10 +220,38 @@ public class AgregarAlumno extends JInternalFrame {
 		springLayout.putConstraint(SpringLayout.EAST, dtFechaNacimiento, 113, SpringLayout.EAST, lblFechaNacimiento);
 		getContentPane().add(dtFechaNacimiento);
 		
+		txtCorreo = new JTextField();
+		springLayout.putConstraint(SpringLayout.NORTH, txtCorreo, 6, SpringLayout.SOUTH, dtFechaNacimiento);
+		springLayout.putConstraint(SpringLayout.WEST, txtCorreo, 0, SpringLayout.WEST, txtRut);
+		springLayout.putConstraint(SpringLayout.EAST, txtCorreo, 0, SpringLayout.EAST, txtRut);
+		txtCorreo.setColumns(10);
+		getContentPane().add(txtCorreo);
+		
+
 		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rut = txtRut.getText();
+				nombre = txtNombre.getText();
+				apellidoPaterno = txtApellidoPaterno.getText();
+				apellidoMaterno = txtApellidoMaterno.getText();
+				nCelular = txtNCelular.getText();
+				fechaNacimiento = dtFechaNacimiento.getDate();
+				DateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+				String fecha2 = f.format(fechaNacimiento);
+				correo = txtCorreo.getText();
+				principal.Alumno.llenarmatriz(rut);
+				
+				
+			}
+		});
 		springLayout.putConstraint(SpringLayout.SOUTH, btnAgregar, -44, SpringLayout.SOUTH, getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, btnAgregar, 0, SpringLayout.EAST, txtRut);
 		getContentPane().add(btnAgregar);
+		
+		
+		
+		
 
 	}
 }
