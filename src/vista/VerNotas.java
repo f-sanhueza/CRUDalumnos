@@ -7,9 +7,11 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JTable;
 
-public class EliminarAlumno extends JInternalFrame {
+public class VerNotas extends JInternalFrame {
 	private JTextField textField;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -18,7 +20,7 @@ public class EliminarAlumno extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EliminarAlumno frame = new EliminarAlumno();
+					VerNotas frame = new VerNotas();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,27 +32,31 @@ public class EliminarAlumno extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EliminarAlumno() {
+	public VerNotas() {
 		setMaximizable(true);
 		setIconifiable(true);
 		setClosable(true);
-		setBounds(100, 100, 396, 159);
+		setBounds(100, 100, 505, 402);
 		getContentPane().setLayout(null);
 		
-		JLabel lblRut = new JLabel("Rut:");
-		lblRut.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblRut.setAlignmentX(3.0f);
-		lblRut.setBounds(10, 48, 27, 19);
-		getContentPane().add(lblRut);
+		JLabel lblRutAlumno = new JLabel("Rut Alumno:");
+		lblRutAlumno.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblRutAlumno.setAlignmentX(3.0f);
+		lblRutAlumno.setBounds(10, 11, 83, 19);
+		getContentPane().add(lblRutAlumno);
 		
 		textField = new JTextField();
-		textField.setBounds(47, 49, 323, 20);
+		textField.setBounds(103, 12, 277, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Eliminar");
-		btnNewButton.setBounds(281, 95, 89, 23);
+		JButton btnNewButton = new JButton("buscar");
+		btnNewButton.setBounds(390, 11, 89, 23);
 		getContentPane().add(btnNewButton);
+		
+		table = new JTable();
+		table.setBounds(10, 41, 469, 320);
+		getContentPane().add(table);
 
 	}
 

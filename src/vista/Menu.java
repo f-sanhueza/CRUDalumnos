@@ -12,6 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class Menu extends JFrame {
 
@@ -49,6 +50,7 @@ public class Menu extends JFrame {
 		contentPane.setLayout(null);
 		
 		JDesktopPane escritorio = new JDesktopPane();
+		escritorio.setBackground(SystemColor.textHighlight);
 		escritorio.setBounds(0, 0, 1039, 556);
 		contentPane.add(escritorio);
 		escritorio.setLayout(null);
@@ -105,9 +107,24 @@ public class Menu extends JFrame {
 		menuBar.add(mnNotas);
 		
 		JMenuItem opSubir = new JMenuItem("Subir");
+		opSubir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SubirNotas subirVentana = new SubirNotas();
+				escritorio.add(subirVentana);
+				subirVentana.show();
+				
+			}
+		});
 		mnNotas.add(opSubir);
 		
 		JMenuItem opVer = new JMenuItem("Ver");
+		opVer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VerNotas verVentana = new VerNotas();
+				escritorio.add(verVentana);
+				verVentana.show();
+			}
+		});
 		mnNotas.add(opVer);
 		
 	}
