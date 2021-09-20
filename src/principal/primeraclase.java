@@ -42,7 +42,7 @@ public static Integer buscaMatriz(String matriz[][], String busca, int start, in
 		if (rutIngresado.contains(".")==true) {//se evalua si el rut fue ingresado con puntos 
 			rutIngresado = rutIngresado.replace(".", ""); // Se eliminan los puntos ingresados 
 		}
-		
+		//ojo con el guion para investigar 
 		Pattern pattern = Pattern.compile("^[0-9]+-[0-9kK]{1}$");//se crea una cadena de caracteres con  la que se evaluara el rut ingresado
 		Matcher matcher=pattern.matcher(rutIngresado);// se comienza la evaluacion 
 
@@ -86,14 +86,11 @@ public static Integer buscaMatriz(String matriz[][], String busca, int start, in
 				restoaux=Integer.toString(resta);// se pasa a string el entero resta 
 			}
 			System.out.print("      restoaux= "+ restoaux);
-			StringBuilder verificador = new StringBuilder(stringRut[1].toUpperCase());//Se construye un string con el digito verificador del rut ingresado
+			String verificador = new String(stringRut[1].toUpperCase());//Se construye un string con el digito verificador del rut ingresado
 			
-			System.out.print("        verificador= "+ verificador);
-			String ver=verificador.toString();//Se pasa a estring por problemas de numero
-			ver=ver.trim();// se quitan los espacios en caso de que existan 
-			System.out.println("        ver= "+ ver);
-			// esto no funciona!!
-			if (ver == restoaux.toUpperCase()) {//se verifica para que de un mensaje por pantalla 
+			System.out.println("        verificador= "+ verificador);
+			
+			if (verificador.equals(restoaux)) {//se verifica para que de un mensaje por pantalla 
 				System.out.println("Rut correcto");
 				return true;
 			}else {
@@ -101,7 +98,7 @@ public static Integer buscaMatriz(String matriz[][], String busca, int start, in
 				return false;
 			}
 		}else {
-			System.out.println("Rut incorrecto");// este mensaje es arrojado en caso de que el rut ingresado tenga caracteres invalidos
+			System.out.println("Formato de Rut incorrecto");// este mensaje es arrojado en caso de que el rut ingresado tenga caracteres invalidos
 			return false;
 		}	
 		
@@ -122,9 +119,9 @@ public static Integer buscaMatriz(String matriz[][], String busca, int start, in
 		String opcion="";
 		Scanner sc = new Scanner(System.in);
 		boolean checkRut=false;
-		/*
+	/*	
 		do {
-		System.out.println("Ingrese el numero de rut");
+		System.out.println("Ingrese el numero de rut en formato nnnnnnnn-n");
 		String rutIngresado=sc.nextLine();
 		checkRut=rutVerificado(rutIngresado);
 		if (checkRut ==false) {
@@ -133,6 +130,7 @@ public static Integer buscaMatriz(String matriz[][], String busca, int start, in
 		
 		}while (checkRut==false && !opcion.equals("SI"));
 */
+		
 		String[] nombreNumeros= new String[8];  
 		nombreNumeros[0]="cero";
 		nombreNumeros[1]="uno";
@@ -150,7 +148,11 @@ public static Integer buscaMatriz(String matriz[][], String busca, int start, in
 		String[] enteroComa=null;
 		Integer parteDecimal=0;
 		
-		if (promedio.contains(".")==true ) {
+		System.out.println("split= "+promedio.split(".").length);
+		promedio=promedio.replace(".", ",");
+		
+		if (promedio.contains(".") ) {
+			
 			enteroPunto= promedio.split(".");
 			parteEntera=Integer.valueOf(enteroPunto[0]); 
 			parteDecimal=Integer.valueOf(enteroPunto[1]); 
