@@ -10,8 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 
 public class VerNotas extends JInternalFrame {
-	private JTextField textField;
-	private JTable table;
+	private JTextField txtRutBuscar;
+	private JTable tableAlumnos;
 
 	/**
 	 * Launch the application.
@@ -45,18 +45,18 @@ public class VerNotas extends JInternalFrame {
 		lblRutAlumno.setBounds(10, 11, 83, 19);
 		getContentPane().add(lblRutAlumno);
 		
-		textField = new JTextField();
-		textField.setBounds(103, 12, 277, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		txtRutBuscar = new JTextField();
+		txtRutBuscar.setBounds(103, 12, 277, 20);
+		getContentPane().add(txtRutBuscar);
+		txtRutBuscar.setColumns(10);
 		
-		JButton btnNewButton = new JButton("buscar");
-		btnNewButton.setBounds(390, 11, 89, 23);
-		getContentPane().add(btnNewButton);
+		JButton btnBuscar = new JButton("buscar");
+		btnBuscar.setBounds(390, 11, 89, 23);
+		getContentPane().add(btnBuscar);
 		
-		table = new JTable();
-		table.setBounds(10, 41, 469, 320);
-		getContentPane().add(table);
+		tableAlumnos = new JTable();
+		tableAlumnos.setBounds(10, 41, 469, 320);
+		getContentPane().add(tableAlumnos);
 
 	}
 

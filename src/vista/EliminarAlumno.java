@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class EliminarAlumno extends JInternalFrame {
-	private JTextField textField;
+	private JTextField txtRut;
 
 	/**
 	 * Launch the application.
@@ -43,14 +43,14 @@ public class EliminarAlumno extends JInternalFrame {
 		lblRut.setBounds(10, 48, 27, 19);
 		getContentPane().add(lblRut);
 		
-		textField = new JTextField();
-		textField.setBounds(47, 49, 323, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		txtRut = new JTextField();
+		txtRut.setBounds(47, 49, 323, 20);
+		getContentPane().add(txtRut);
+		txtRut.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Eliminar");
-		btnNewButton.setBounds(281, 95, 89, 23);
-		getContentPane().add(btnNewButton);
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(281, 95, 89, 23);
+		getContentPane().add(btnEliminar);
 
 	}
 

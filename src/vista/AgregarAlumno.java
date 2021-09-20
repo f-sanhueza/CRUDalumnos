@@ -131,10 +131,10 @@ public class AgregarAlumno extends JInternalFrame {
 		springLayout.putConstraint(SpringLayout.EAST, dtFechaNacimiento, 113, SpringLayout.EAST, lblFechaNacimiento);
 		getContentPane().add(dtFechaNacimiento);
 		
-		JButton btnNewButton = new JButton("Agregar");
-		springLayout.putConstraint(SpringLayout.SOUTH, btnNewButton, -44, SpringLayout.SOUTH, getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, txtRut);
-		getContentPane().add(btnNewButton);
+		JButton btnAgregar = new JButton("Agregar");
+		springLayout.putConstraint(SpringLayout.SOUTH, btnAgregar, -44, SpringLayout.SOUTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, btnAgregar, 0, SpringLayout.EAST, txtRut);
+		getContentPane().add(btnAgregar);
 
 	}
 }
